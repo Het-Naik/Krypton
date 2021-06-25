@@ -90,9 +90,9 @@ class MyHelp(commands.HelpCommand):
 
 client.help_command = MyHelp()
 
-for file in os.listdir('/Users/mukti/Kr6pton/commands'):
+for file in os.listdir('.commands'):
     if file.endswith('.py') and not file.startswith('_'):
         client.load_extension(f'commands.{file[:-3]}')
         print(f'Loaded the category: {file}')
 
-client.run('ODAyMzgxMzk4Mzk5OTA5OTI5.YAuZ6A.inX6ZTyXzRLDr2yEGNzc5w9aGSM')
+client.run('BotToken')
