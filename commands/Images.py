@@ -33,10 +33,11 @@ class Images(commands.Cog, name='Images'):
         if work:
             font = ImageFont.truetype("ARIAL.TTF", size)
             draw.text((20, 120), txt, (0, 0, 0), font = font)
-            img.save("/Users/mukti/Kr6pton/Assets/hwtkyl.jpg")
+            img.save("
+                     /Assets/hwtkyl.jpg")
             await ctx.channel.purge(limit = 1)
             await ctx.channel.send("Processing image. It may take upto 3 seconds.", delete_after = 3)
-            await ctx.channel.send(file = discord.File("/Users/mukti/Kr6pton/Assets/hwtkyl.jpg"))
+            await ctx.channel.send(file = discord.File("./Assets/hwtkyl.jpg"))
         else:
             await ctx.channel.send("The text can only be upto 50 characters")
 
@@ -45,14 +46,14 @@ class Images(commands.Cog, name='Images'):
         if usr == "author":
             usr = ctx.author
         await ctx.channel.send("Processing Image. This may take upto 3 seconds", delete_after=3)
-        base = Image.open("/Users/mukti/Kr6pton/Assets/notstonks.jpg")
+        base = Image.open("./Assets/notstonks.jpg")
         face = usr.avatar_url_as(size = 128)
         data1 = BytesIO(await face.read())
         pfp1 = Image.open(data1)
         pfp1 = pfp1.resize((155, 155))
         base.paste(pfp1, (165, 6))
-        base.save("/Users/mukti/Kr6pton/Assets/notstonksedited.jpg")
-        await ctx.channel.send(file = discord.File("/Users/mukti/Kr6pton/Assets/notstonksedited.jpg"))
+        base.save("./Assets/notstonksedited.jpg")
+        await ctx.channel.send(file = discord.File("./Assets/notstonksedited.jpg"))
 
 
     @commands.command()
@@ -60,14 +61,14 @@ class Images(commands.Cog, name='Images'):
         if usr == "author":
             usr = ctx.author
         await ctx.channel.send("Processing Image. This may take upto 3 seconds", delete_after=3)
-        base = Image.open("/Users/mukti/Kr6pton/Assets/stonks.jpg")
+        base = Image.open("./Assets/stonks.jpg")
         face = usr.avatar_url_as(size = 128)
         data1 = BytesIO(await face.read())
         pfp1 = Image.open(data1)
         pfp1 = pfp1.resize((340, 340))
         base.paste(pfp1, (150, 75))
-        base.save("/Users/mukti/Kr6pton/Assets/stonks.jpg")
-        await ctx.send(file = discord.File("/Users/mukti/Kr6pton/Assets/stonks.jpg"))
+        base.save("./Assets/stonks.jpg")
+        await ctx.send(file = discord.File("./Assets/stonks.jpg"))
 
 
     @commands.command()
