@@ -5,14 +5,14 @@ intents = discord.Intents.all()
 colors = [0x0000EE, 0x00CD00, 0x05EDFF, 0x24D330, 0x5CACEE, 0x76EE00]
 
 async def bal_data():
-    with open("/Users/mukti/Kr6pton/Assets/balance.json", "r") as f:
+    with open("./Assets/balance.json", "r") as f:
         users = json.load(f)
     return users
 
 
 async def open_acc(user):
     # users = await bal_data()
-    with open("/Users/mukti/Kr6pton/Assets/balance.json", "r") as f:
+    with open("./Assets/balance.json", "r") as f:
         users = json.load(f)
         if str(user.id) in users:
             return False
@@ -25,7 +25,7 @@ async def open_acc(user):
             users[str(user.id)]["microsoft stocks"] = 0
             users[str(user.id)]["nvidia stocks"] = 0
             users[str(user.id)]["amd stocks"] = 0
-        with open("/Users/mukti/Kr6pton/Assets/balance.json", "w") as h:
+        with open("./Assets/balance.json", "w") as h:
             json.dump(users, h)
 
 
@@ -41,7 +41,7 @@ class Economy(commands.Cog, name="Economy"):
         earn = random.randrange(101)
         await ctx.channel.send(f"you got {earn} from someone")
         acc_details[str(user.id)]["wallet"] += earn
-        with open("/Users/mukti/Kr6pton/Assets/balance.json", "w") as f:
+        with open("./Assets/balance.json", "w") as f:
             json.dump(acc_details, f)
 
     # The betting command
@@ -59,11 +59,11 @@ class Economy(commands.Cog, name="Economy"):
                 if botRoll > userRoll:
                     if val < acc_details[str(user.id)]["wallet"]:
                         acc_details[str(user.id)]["wallet"] -= val
-                        with open("balance.json", "w") as f:
+                        with open("./Assets/balance.json", "w") as f:
                             json.dump(acc_details, f)
                     else:
                         acc_details[str(user.id)]["wallet"] = 0
-                        with open("balance.json", "w") as f:
+                        with open("./Assets/balance.json", "w") as f:
                             json.dump(acc_details, f)
                     loss = discord.Embed(title = f"{ctx.message.author}'s losing gambling game.", description = f"you lost {val}\nNew balance = {acc_details[str(user.id)]['wallet']}", colour = random.choice(colors), timestamp = datetime.datetime.utcnow())
                     loss.add_field(name = f"{ctx.message.author} rolled:", value = f"{userRoll}")
@@ -77,7 +77,7 @@ class Economy(commands.Cog, name="Economy"):
                     win.add_field(name = f"{ctx.message.author} rolled:", value = f"{userRoll}")
                     win.add_field(name = f"Krypton rolled:", value = f"{botRoll}")
                     await ctx.channel.send(embed = win)
-                    with open("balance.json", "w") as f:
+                    with open("./Assets/balance.json", "w") as f:
                         json.dump(acc_details, f)
 
                 elif userRoll == botRoll:
@@ -86,7 +86,7 @@ class Economy(commands.Cog, name="Economy"):
                     tie.add_field(name = f"{ctx.message.author} rolled:", value = f"{userRoll}")
                     tie.add_field(name = f"Krypton rolled:", value = f"{botRoll}")
                     await ctx.channel.send(embed = tie)
-                    with open("balance.json", "w") as f:
+                    with open("./Assets/balance.json", "w") as f:
                         json.dump(acc_details, f)
 
             else:
