@@ -2,14 +2,14 @@ import json
 from discord.ext import commands
 
 async def bal_data():
-    with open("/Users/mukti/Kr6pton/Assets/balance.json", "r") as f:
+    with open("./Assets/balance.json", "r") as f:
         users = json.load(f)
     return users
 
 
 async def open_acc(user):
     # users = await bal_data()
-    with open("/Users/mukti/Kr6pton/Assets/balance.json", "r") as f:
+    with open("./Assets/balance.json", "r") as f:
         users = json.load(f)
         if str(user.id) in users:
             return False
@@ -22,7 +22,7 @@ async def open_acc(user):
             users[str(user.id)]["microsoft stocks"] = 0
             users[str(user.id)]["nvidia stocks"] = 0
             users[str(user.id)]["amd stocks"] = 0
-        with open("/Users/mukti/Kr6pton/Assets/balance.json", "w") as h:
+        with open("./Assets/balance.json", "w") as h:
             json.dump(users, h)
 
 
